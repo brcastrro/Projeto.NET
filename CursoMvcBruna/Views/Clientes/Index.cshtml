@@ -1,0 +1,68 @@
+﻿@model List<Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1>Clientes</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create">
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-user-plus"></i> &nbsp
+                    Create New
+                </button>
+            </a>
+        </div>
+    </div>
+
+   
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                CPF
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+                <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td class="text-end p-0 align-middle">
+
+                <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.ClienteId">Edit</a>
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.ClienteId">Details</a>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.ClienteId">Delete</a>
+                       
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
